@@ -29,11 +29,16 @@ int main() {
 
     insertarHash(list2, hashTable);
 
-    List * resultado = resta(list1, hashTable);
+    List * resultadoResta = resta(list1, hashTable);
+    List * resultadoInterseccion = interseccion(list1, hashTable);
 
     printf("\nElementos de L1 no presentes en L2");
-    print(resultado);
+    print(resultadoResta);
 
+    printf("\nInterseccion de lista 1 con lista 2");
+    print(resultadoInterseccion);
+
+    subconjunto(list1, hashTable, list2->size);
 
     return 0;
 }

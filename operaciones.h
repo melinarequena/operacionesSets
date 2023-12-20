@@ -12,6 +12,7 @@ typedef struct node{
 
 typedef struct list{
     Node * head;
+    int size;
 }List;
 
 Node * newNode(int data);
@@ -24,5 +25,7 @@ void insertarHash(List * list, List ** hashTable);
 int hashFunction(int data);
 
 List * resta(List * list1, List ** hashTable);
+List * interseccion(List * list, List ** hashTable);
+void subconjunto(List * list, List ** hashTable, int sizeHashTable);
 
 #endif //OPERACIONESSETS_OPERACIONES_H

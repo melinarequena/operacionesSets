@@ -24,6 +24,7 @@ List * newList(){
         exit (-1);
     }
     aux->head = NULL;
+    aux->size = 0;
     return aux;
 }
 
@@ -43,6 +44,7 @@ void print(List * list){
 void insert(Node *node, List *list) {
     if(list->head == NULL){
         list->head = node;
+        list->size = 1;
         return;
     }
     Node * aux = list->head;
@@ -50,6 +52,7 @@ void insert(Node *node, List *list) {
         aux = aux->next;
     }
     aux->next = node;
+    list->size++;
 }
 
 List *resta(List *list1, List **hashTable) {
@@ -88,4 +91,52 @@ void insertarHash(List *list, List ** hashTable) {
         insert(newNode(aux->data),hashTable[hashFunction(aux->data)]);
         aux = aux->next;
     }
+}
+
+List *interseccion(List *list, List **hashTable) {
+    List * resultado = newList();
+    Node * aux1 = list->head;
+    while (aux1){
+        int pos = hashFunction(aux1->data);
+        if(hashTable[pos] != NULL){
+            Node * aux2 = hashTable[pos]->head;
+            while (aux2 && aux1->data != aux2->data){
+                aux2 = aux2->next;
+            }
+            if(aux2 && aux1->data == aux2->data){
+                insert(newNode(aux2->data), resultado);
+            }
+            aux1 = aux1->next;
+        }
+    }
+    return resultado;
+}
+
+void subconjunto(List *list, List **hashTable, int sizeHashTable) {
+    int cont1 = 0, cont2 = 0;
+    Node * aux1 = list->head;
+    while (aux1){
+        int pos = hashFunction(aux1->data);
+        if(hashTable[pos] != NULL){
+            Node * aux2 = hashTable[pos]->head;
+            while (aux2 && aux1->data != aux2->data){
+                aux2 = aux2->next;
+            }
+            if(aux2 && aux1->data == aux2->data){
+                cont1++;
+                cont2++;
+            }
+        }
+        aux1 = aux1->next;
+    }
+    if(list->size == cont1){
+        printf("\nLa lista 1 es un subconjunto de la lista 2\n");
+    }else
+        if(sizeHashTable == cont2){
+            printf("\nLa lista 2 es un subconjunto de la lista 1\n");
+        }else{
+            printf("\nNinguna lista es subconjunto\n");
+        }
+
+
 }

@@ -27,5 +27,6 @@ int hashFunction(int data);
 List * resta(List * list1, List ** hashTable);
 List * interseccion(List * list, List ** hashTable);
 void subconjunto(List * list, List ** hashTable, int sizeHashTable);
+List * unionOperation(List * list, List ** hashTable);
 
 #endif //OPERACIONESSETS_OPERACIONES_H

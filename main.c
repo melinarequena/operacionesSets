@@ -15,9 +15,9 @@ int main() {
 
     List * list2 = newList();
     insert(newNode(1), list2);
-    insert(newNode(2), list2);
-    insert(newNode(4), list2);
-    insert(newNode(7), list2);
+    insert(newNode(3), list2);
+    insert(newNode(5), list2);
+    insert(newNode(9), list2);
     insert(newNode(14), list2);
 
     print(list1);
@@ -31,6 +31,7 @@ int main() {
 
     List * resultadoResta = resta(list1, hashTable);
     List * resultadoInterseccion = interseccion(list1, hashTable);
+    List * resultadoUnion = unionOperation(list1, hashTable);
 
     printf("\nElementos de L1 no presentes en L2");
     print(resultadoResta);
@@ -39,6 +40,9 @@ int main() {
     print(resultadoInterseccion);
 
     subconjunto(list1, hashTable, list2->size);
+
+    printf("\nUnion de lista 1 con lista 2");
+    print(resultadoUnion);
 
     return 0;
 }

@@ -137,6 +137,24 @@ void subconjunto(List *list, List **hashTable, int sizeHashTable) {
         }else{
             printf("\nNinguna lista es subconjunto\n");
         }
+}
 
-
+List *unionOperation(List *list, List **hashTable) {
+    List * resultado = newList();
+    Node * aux1 = list->head;
+    while(aux1){
+        int pos = hashFunction(aux1->data);
+        if(hashTable[pos]->head){
+            Node * aux2 = hashTable[pos]->head;
+            while (aux2){
+                if(aux1->data != aux2->data){
+                    insert(newNode(aux2->data), resultado);
+                }
+                aux2 = aux2->next;
+            }
+        }
+        insert(newNode(aux1->data), resultado);
+        aux1 = aux1->next;
+    }
+    return resultado;
 }

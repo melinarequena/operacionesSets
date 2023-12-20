@@ -3,4 +3,4 @@ project(operacionesSets C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(operacionesSets main.c)
+add_executable(operacionesSets main.c operaciones.c operaciones.h)
